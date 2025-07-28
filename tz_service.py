@@ -35,16 +35,12 @@ def create_json(dt_at_zip, tz_abbreviation, time_diff):
 
 while True:
     message = socket.recv()
-    search_zip = message.decode()
-    print(search_zip)
-    
+    search_zip = message.decode()    
     timezone_name = get_time_zone_name(search_zip)
     dt_at_zip = get_time_in_search_timezone(timezone_name)
-
     tz_abbreviation = dt_at_zip.tzname()
     time_diff = calculate_time_difference(dt_at_zip)
     json_data = create_json(dt_at_zip, tz_abbreviation, time_diff)
-    print(json_data)
     socket.send_string(json_data)
 
 context.destroy()
