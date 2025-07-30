@@ -42,6 +42,7 @@ while True:
     time_diff = calculate_time_difference(dt_at_zip)
     json_data = create_json(dt_at_zip, tz_abbreviation, time_diff)
     socket.send_string(json_data)
+    print(f"Data sent to main program: {json_data}")
 
 context.destroy()
 
